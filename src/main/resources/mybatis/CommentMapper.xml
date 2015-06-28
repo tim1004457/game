@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CommentMapper">
+
+    <insert id="insertUser" parameterType="com.pig8.api.business.entity.UserEntity"
+            useGeneratedKeys="true" keyProperty="id">
+    insert comment_user(uid,nick_name) value(#{uid},#{nickName})
+  </insert>
+
+    <insert id="addUserComment" parameterType="com.pig8.api.business.entity.CommentEntity"
+            useGeneratedKeys="true" keyProperty="id">
+    insert comment (comment_uid,comment_nick_name,comment_content) value(#{uid},#{comment},#{commentUserNickName})
+    </insert>
+
+    <select id="getUserComent" parameterType="map"
+            resultType="com.pig8.api.business.entity.CommentEntity">
+      select comment_uid uid,comment_nick_name commentUserNickName, comment_content comment from comment order by id desc
+    </select>
+
+    <select id="getWord" parameterType="map"
+            resultType="String">
+        select word from comment_word where type = #{type}
+        <if test=" start != null ">
+            <![CDATA[
+			LIMIT #{start}, #{pageSize};
+        ]]>
+        </if>
+    </select>
+</mapper>
+

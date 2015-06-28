@@ -13,6 +13,6 @@
     </typeAliases>
 
     <mappers>
-
+        <mapper resource="mybatis/CommentMapper.xml" />
     </mappers>
 </configuration>

@@ -70,9 +70,6 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
-    <error-page>
-        <location>/jsp/showMessage.jsp</location>
-    </error-page>
     <mime-mapping>
         <extension>xml</extension>
         <mime-type>text/xml</mime-type>

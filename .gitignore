@@ -1,0 +1,5 @@
+/target
+/src/main/resources/words.properties
+/src/main/resources/log4j.properties
+/.idea
+/src/main/resources/conf
