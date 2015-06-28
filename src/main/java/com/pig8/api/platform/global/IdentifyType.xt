@@ -1,0 +1,6 @@
+packageName=com.pig8.api.platform.global
+className=SelectType
+BEGIN=开始
+ID_CARD=身份证
+PASSPORT=护照
+END=未知类型

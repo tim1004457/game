@@ -1,0 +1,2 @@
+python ./xt.py
+pause

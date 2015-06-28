@@ -1,0 +1,5 @@
+packageName=com.pig8.api.platform.global
+className=MessageStatus
+NOT_READ=Î´¶Á
+READ = ÒÑ¶Á
+END=´íÎó×´Ì¬

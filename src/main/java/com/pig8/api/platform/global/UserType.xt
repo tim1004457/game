@@ -1,0 +1,6 @@
+packageName=com.pig8.api.platform.global
+className=UserType
+USER=用户
+GUDIE=达人
+INTENT_USER=意向达人
+END=错误状态

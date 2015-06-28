@@ -1,0 +1,6 @@
+packageName=com.pig8.api.platform.global
+DEST=目的地
+TOPIC=专题
+GUIDE=达人
+JOURNEY=行程
+END=错误状态

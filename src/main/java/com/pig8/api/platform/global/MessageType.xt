@@ -1,0 +1,7 @@
+packageName=com.pig8.api.platform.global
+className=MessageType
+BEGIN=开始
+MESSAGE_TYPE_SYS= 系统消息
+MESSAGE_TYPE_JOURNEY= 行程消息
+MESSAGE_TYPE_ORDER= 订单消息
+END=错误状态

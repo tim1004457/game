@@ -1,0 +1,9 @@
+packageName=com.pig8.api.platform.global
+className=OperationType
+BEGIN=开始
+	DEST=目的地
+	TOPIC=主题
+	GUIDE=达人
+	JOURNEY=行程
+	HTTP_URL=web跳转
+END=错误状态

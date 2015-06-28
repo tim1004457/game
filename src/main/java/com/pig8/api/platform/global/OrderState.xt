@@ -1,0 +1,13 @@
+packageName=com.pig8.api.platform.global
+className=OrderState
+BEGIN=开始
+	CONFIRMING =  待确认
+	PAYING = 待付款
+	SUBCRIBED = 已预定
+	TRAVELING =  旅行中
+	FINISH =   完成
+	CANCEL =  取消
+	REFUSE =  拒绝
+	UNSUBCRIBED = 退订
+	UNSUBCRIBING =  退订中
+END=错误状态

@@ -1,0 +1,7 @@
+packageName=com.pig8.api.platform.global
+className=SelectType
+BEGIN=开始
+TOPIC=专题
+JOURNEY=行程
+GUIDE=达人
+END=错误状态

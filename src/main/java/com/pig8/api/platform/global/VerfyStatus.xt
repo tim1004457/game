@@ -1,0 +1,4 @@
+packageName=com.pig8.api.platform.global
+NOT_VERIFIED=未验证
+VERIFIED=已验证
+END=错误状态

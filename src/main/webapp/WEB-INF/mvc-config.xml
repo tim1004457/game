@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 在这里装配 controller 添加需要装配的包名-->
+    <context:component-scan base-package="com.pig8.api"/>
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <!-- 看了一下源码，客户端请求类型必须设置成application/x-protobuf采用用这个类来解析实体 -->
+            <bean
+                class="org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 对模型视图名称的解析,即在模型视图名称添加前后缀 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/jsp"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="contentType" value="text/jsp; charset=UTF-8"/>
+    </bean>
+
+    <!--拦截器 begin-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.pig8.api.platform.interceptor.AuthorityInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!--拦截器 end-->
+
+    <!-- 返回JSON模版 -->
+    <bean
+        class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean
+                    class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 返回类型解析，定义Servlet异步超时 -->
+    <bean
+        class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+    <bean
+        class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="asyncRequestTimeout" value="120000"/>
+        <property name="messageConverters">
+            <list>
+                <!-- 文本支持 -->
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter"></bean>
+                <!-- Json支持 -->
+                <bean
+                    class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+            </list>
+        </property>
+    </bean>
+
+    <!--上传文件支持-->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- one of the properties available; the maximum file size in bytes
+        <property name="maxUploadSize" value="100000"/>
+         -->
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="maxUploadSize" value="10485760000"/>
+    </bean>
+
+    <!--定义异常处理页面-->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <!-- 定义默认的异常处理页面，当该异常类型的注册时使用 -->
+        <property name="defaultErrorView" value="error/system500"></property>
+        <!-- 定义异常处理页面用来获取异常信息的变量名，默认名为exception -->
+        <property name="exceptionAttribute" value="exception"></property>
+        <!-- 定义需要特殊处理的异常，用类名或完全路径名作为key，异常也页名作为值 -->
+        <property name="exceptionMappings">
+            <props>
+                <prop key="Exception">/error/system500</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- 拦截器配置-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 权限-->
+            <mvc:mapping path="/user/**"/>
+            <bean class="com.pig8.api.platform.interceptor.AuthorityInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>
