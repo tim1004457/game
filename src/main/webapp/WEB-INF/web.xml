@@ -16,12 +16,12 @@
         <param-value>classpath*:spring/application-*.xml</param-value>
     </context-param>
 
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    <listener>
-        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
-    </listener>
+    <!--<listener>-->
+        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+    <!--</listener>-->
+    <!--<listener>-->
+        <!--<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>-->
+    <!--</listener>-->
 
     <!-- - Servlet that dispatches request to registered handlers (Controller
         implementations). -->

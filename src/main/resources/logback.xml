@@ -7,11 +7,11 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
         <resetJUL>true</resetJUL>
     </contextListener>
 
-    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径
+    <!--瀹氫箟鏃ュ織鏂囦欢鐨勫瓨鍌ㄥ湴鍧� 鍕垮湪 LogBack 鐨勯厤缃腑浣跨敤鐩稿璺緞
     -->
 
-    <!--<property name="log_home" value="E:/log"/>-->
-    <property name="log_home" value="/data/log/8pig-api" />
+    <property name="log_home" value="E:/log"/>
+    <!--<property name="log_home" value="/data/log/8pig-api" />-->
 
     <!-- To enable JMX Management -->
     <jmxConfigurator/>
@@ -22,7 +22,7 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
         </encoder>
     </appender>
 
-    <!-- 按照每天生成日志文件 -->
+    <!-- 鎸夌収姣忓ぉ鐢熸垚鏃ュ織鏂囦欢 -->
     <appender name="info_log" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <Encoding>UTF-8</Encoding>
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -31,22 +31,22 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
             <onMismatch>DENY</onMismatch>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志文件输出的文件名-->
+            <!--鏃ュ織鏂囦欢杈撳嚭鐨勬枃浠跺悕-->
             <FileNamePattern>${log_home}/info_%d{yyyy-MM-dd}.log</FileNamePattern>
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <!--鏍煎紡鍖栬緭鍑猴細%d琛ㄧず鏃ユ湡锛�%thread琛ㄧず绾跨▼鍚嶏紝%-5level锛氱骇鍒粠宸︽樉绀�5涓瓧绗﹀搴�%msg锛氭棩蹇楁秷鎭紝%n鏄崲琛岀-->
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %c %-5level %msg%n
             </pattern>
         </layout>
-        <!--日志文件最大的大小-->
+        <!--鏃ュ織鏂囦欢鏈�澶х殑澶у皬-->
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>10MB</MaxFileSize>
         </triggeringPolicy>
     </appender>
 
-    <!-- 按照每天生成日志文件 -->
+    <!-- 鎸夌収姣忓ぉ鐢熸垚鏃ュ織鏂囦欢 -->
     <appender name="warn_log" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <Encoding>UTF-8</Encoding>
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -55,22 +55,22 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
             <onMismatch>DENY</onMismatch>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志文件输出的文件名-->
+            <!--鏃ュ織鏂囦欢杈撳嚭鐨勬枃浠跺悕-->
             <FileNamePattern>${log_home}/warn_%d{yyyy-MM-dd}.log</FileNamePattern>
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <!--鏍煎紡鍖栬緭鍑猴細%d琛ㄧず鏃ユ湡锛�%thread琛ㄧず绾跨▼鍚嶏紝%-5level锛氱骇鍒粠宸︽樉绀�5涓瓧绗﹀搴�%msg锛氭棩蹇楁秷鎭紝%n鏄崲琛岀-->
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %c %-5level %msg%n
             </pattern>
         </layout>
-        <!--日志文件最大的大小-->
+        <!--鏃ュ織鏂囦欢鏈�澶х殑澶у皬-->
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>10MB</MaxFileSize>
         </triggeringPolicy>
     </appender>
 
-    <!-- 按照每天生成日志文件 -->
+    <!-- 鎸夌収姣忓ぉ鐢熸垚鏃ュ織鏂囦欢 -->
     <appender name="error_log" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <Encoding>UTF-8</Encoding>
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -79,22 +79,18 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
             <onMismatch>DENY</onMismatch>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志文件输出的文件名-->
             <FileNamePattern>${log_home}/error_%d{yyyy-MM-dd}.log</FileNamePattern>
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %c %-5level %msg%n
             </pattern>
         </layout>
-        <!--日志文件最大的大小-->
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>1GB</MaxFileSize>
         </triggeringPolicy>
     </appender>
 
-    <!-- 按照每天生成日志文件 -->
     <appender name="debug_log" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <Encoding>UTF-8</Encoding>
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -103,35 +99,28 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
             <onMismatch>DENY</onMismatch>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志文件输出的文件名-->
             <FileNamePattern>${log_home}/debug_%d{yyyy-MM-dd}.log</FileNamePattern>
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %c %-5level %msg%n
             </pattern>
         </layout>
-        <!--日志文件最大的大小-->
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>1GB</MaxFileSize>
         </triggeringPolicy>
     </appender>
 
-    <!-- 按照每天生成日志文件 -->
     <appender name="sql_log" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <Encoding>UTF-8</Encoding>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志文件输出的文件名-->
             <FileNamePattern>${log_home}/sql_%d{yyyy-MM-dd}.log</FileNamePattern>
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %c %-5level %msg%n
             </pattern>
         </layout>
-        <!--日志文件最大的大小-->
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>1GB</MaxFileSize>
         </triggeringPolicy>
@@ -141,8 +130,7 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
      <logger name="org.springframework.samples.service.service" level="debug"/> -->
 
     <root level="INFO">
-        <!--正式环境不需要输出
-        <appender-ref ref="console"/>-->
+        <appender-ref ref="console"/>
         <appender-ref ref="info_log"/>
     </root>
 
@@ -154,12 +142,10 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
         <appender-ref ref="warn_log"/>
     </root>
 
-    <!--debug日志，正式环境不需要输出-->
     <root level="DEBUG">
         <appender-ref ref="debug_log"/>
     </root>
 
-    <!-- 下面配置一些第三方包的日志过滤级别，用于避免刷屏 -->
     <logger name="org.springframework" level="WARN"/>
     <logger name="org.apache" level="WARN"/>
 

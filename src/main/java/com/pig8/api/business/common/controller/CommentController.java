@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -35,13 +36,16 @@ public class CommentController {
 
     @RequestMapping(value = "/comment/list")
     @ResponseBody
-    public List<CommentEntity> listComment(UserEntity entity) {
-        return commentServicer.listComment(entity);
+    public ModelAndView listComment(UserEntity entity) {
+        ModelAndView view = new ModelAndView("comment");
+        List<CommentEntity> commentEntities = commentServicer.listComment(entity);
+        view.addObject("data",commentEntities);
+        return view;
     }
 
     @RequestMapping(value = "/word/list")
     @ResponseBody
-    public List<String > listWord(PageQueryRequest request) {
+    public List<String> listWord(PageQueryRequest request) {
         return commentServicer.listWord(request);
     }
 }
